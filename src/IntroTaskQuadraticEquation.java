@@ -21,22 +21,22 @@ public class IntroTaskQuadraticEquation {
                 if (root == 0)
                     return "x = 0";
                 else
-                    return "x = " + String.format("%.2f",root);
+                    return String.format("x = %.2f", root);
             }
         else{
             float D = b*b-4*a*c;
             if (D < 0)
                 return ("Решений нет (по крайней мере, в действительных числах)");
             else if (D == 0)
-                return "x = " + String.format("%.2f",-b/(2*a));
+                return String.format("x = %.2f", -b/(2*a));
             else {
                 double sqrt = Math.sqrt(D);
                 double x1 = (-b+sqrt)/(2*a);
                 double x2 = (-b-sqrt)/(2*a);
                 if (x1 > x2)
-                    return "x1 = " + String.format("%.2f",x1) + " и x2 = " + String.format("%.2f",x2);
+                    return String.format("x1 = %.2f", x1) + String.format(" и x2 = %.2f", x2);
                 else
-                    return "x1 = " + String.format("%.2f",x2) + " и x2 = " + String.format("%.2f",x1);
+                    return String.format("x1 = %.2f", x2) + String.format(" и x2 = %.2f", x1);
             }
 
         }
