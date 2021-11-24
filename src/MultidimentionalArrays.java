@@ -101,10 +101,7 @@ public class MultidimentionalArrays {
                 eshyoStroka += "  " + output[i][j];
             System.out.println(eshyoStroka);
         }
-        for (int i = 0; i < tableOfLengthes.length; i++)
-            System.out.println(tableOfLengthes[i]);
             }
-
     }
 
 
