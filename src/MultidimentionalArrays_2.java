@@ -1,0 +1,49 @@
+public class MultidimentionalArrays_2 {
+    public static void main(String[] args) {
+
+        char[][] c = createTable(20, '.');
+        printTable(c);
+
+        System.out.println("============ Заполним строки: ==========");
+        fillFirstAndLastLines(c, '#');
+        printTable(c);
+
+        System.out.println("============ Заполним столбцы: =========");
+        fillFirstAndLastColumns(c, '#');
+        printTable(c);
+    }
+
+    public static char[][] createTable(int n, char c) {
+        char[][] a;
+        a = new char[n][n];
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                a[i][j] = c;
+        return a;
+    }
+
+    public static void printTable(char[][] a) {
+        for (int i = 0; i < a.length; i++) {
+            String stroka = "";
+            for (int j = 0; j < a.length; j++)
+                stroka += a[i][j] + " ";
+            System.out.println(stroka);
+        }
+    }
+
+    public static char[][] fillFirstAndLastLines(char[][] a, char c) {
+        for (int j = 0; j < a.length; j++)
+            a[0][j] = c;
+        for (int j = 0; j < a.length; j++)
+            a[a.length-1][j] = c;
+        return a;
+    }
+
+    public static char[][] fillFirstAndLastColumns(char[][] a, char c) {
+        for (int i = 0; i < a.length; i++)
+            a[i][0] = c;
+        for (int i = 0; i < a.length; i++)
+            a[i][a.length-1] = c;
+        return a;
+    }
+}
