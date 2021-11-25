@@ -5,11 +5,11 @@ public class MultidimentionalArrays_2 {
         char[][] c = createTable(20, '.');
         printTable(c);
 
-        System.out.println("============ Заполним строки: ==========");
+        System.out.println("============= Заполним строки: ===========");
         fillFirstAndLastLines(c, '#');
         printTable(c);
 
-        System.out.println("============ Заполним столбцы: =========");
+        System.out.println("============= Заполним столбцы: ==========");
         fillFirstAndLastColumns(c, '#');
         printTable(c);
     }
