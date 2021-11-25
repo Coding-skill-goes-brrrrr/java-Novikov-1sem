@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class MultidimentionalArrays_2 {
     public static void main(String[] args) {
 
@@ -32,10 +33,8 @@ public class MultidimentionalArrays_2 {
     }
 
     public static char[][] fillFirstAndLastLines(char[][] a, char c) {
-        for (int j = 0; j < a.length; j++)
-            a[0][j] = c;
-        for (int j = 0; j < a.length; j++)
-            a[a.length-1][j] = c;
+        Arrays.fill(a[0], c);
+        Arrays.fill(a[a.length-1], c);
         return a;
     }
 
