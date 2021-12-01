@@ -24,10 +24,10 @@ public class MultidimentionalArrays_2 {
     }
 
     public static void printTable(char[][] a) {
-        for (int i = 0; i < a.length; i++) {
-            String stroka = "";
+        for (char[] chars : a) {
+            StringBuilder stroka = new StringBuilder();
             for (int j = 0; j < a.length; j++)
-                stroka += a[i][j] + " ";
+                stroka.append(chars[j]).append(" ");
             System.out.println(stroka);
         }
     }
