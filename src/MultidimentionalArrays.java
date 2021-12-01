@@ -37,30 +37,28 @@ public class MultidimentionalArrays {
 
     public static void shift(int[] a) {
         int last = a[a.length-1];
-        for (int i = a.length-1; i > 0; i--)
-            a[i] = a[i-1];
+        System.arraycopy(a, 0, a, 1, a.length - 1);
         a[0] = last;
     }
 
 
     public static void toString(int[] a) {
-        String stroka = "";
-        for (int j : a) stroka+=Integer.toString(a[j])+" ";
+        StringBuilder stroka = new StringBuilder();
+        for (int j : a) stroka.append(a[j]).append(" ");
         System.out.println(stroka);
     }
 
     public static void printTable(int[][] a) {
-        for (int i = 0; i < a.length; i++)
-            toString(a[i]);
+        for (int[] ints : a) toString(ints);
 
     }
 
 
     public static void printTableAligned(int[][] a) {
         int max = 0;
-        for (int i = 0; i < a.length; i++)
-            if (a[i].length > max)
-                max = a[i].length;
+        for (int[] ints : a)
+            if (ints.length > max)
+                max = ints.length;
             //поиск строки с наибольшим количеством элементов
         String[][] output  = new String[a.length][max];
         for (int i = 0; i < a.length; i++)
@@ -77,10 +75,10 @@ public class MultidimentionalArrays {
         int[] tableOfLengthes = new int[max];
         for (int j = 0; j < max; j++) {
             String maxNum = "";
-            for (int i = 0; i < output.length; i++)
-                if (output[i][j] != null)
-                    if (output[i][j].length() > maxNum.length())
-                        maxNum = output[i][j];
+            for (String[] strings : output)
+                if (strings[j] != null)
+                    if (strings[j].length() > maxNum.length())
+                        maxNum = strings[j];
             tableOfLengthes[j] = maxNum.length();
         }
         //построили массив самых длинных элементов в столбцах; сверяя вывод с ним, буду расставлять пробелы
@@ -95,10 +93,10 @@ public class MultidimentionalArrays {
                         output[i][j] = " " + output[i][j];
                 }
             //преобразовали массив и подготовили его к выводу
-        for (int i = 0; i < output.length; i++){
-            String eshyoStroka = output[i][0];
+        for (String[] strings : output) {
+            StringBuilder eshyoStroka = new StringBuilder(strings[0]);
             for (int j = 1; j < output.length; j++)
-                eshyoStroka += "  " + output[i][j];
+                eshyoStroka.append("  ").append(strings[j]);
             System.out.println(eshyoStroka);
         }
             }
