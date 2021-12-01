@@ -37,7 +37,7 @@ public class Regulyarnye_vyrazheniya {
         System.out.println(snovaKoty("122 выф ф"));
         System.out.println(snovaKoty("кот который кота закотил cat"));
         System.out.println("-------------"); //разграничивание вывода функций
-        minusOdin("111 котов 22 часа и -220 эффективности");
+        minusOdin("111 котов, 22 часа и -220 эффективности");
         minusOdin("-1 (минус один) должен дать 0 (ноль), как тебе такое, Илон Маск?");
     }
 
