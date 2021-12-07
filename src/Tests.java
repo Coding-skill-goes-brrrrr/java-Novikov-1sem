@@ -17,5 +17,20 @@ public class Tests {
         matrica.pow(2).print();
         System.out.println("----------------------------");
         matrica.pow(4).print();
+        System.out.println("----------------------------");
+        System.out.println(funbonacci(1));
+        System.out.println(funbonacci(2));
+        System.out.println(funbonacci(3));
+        System.out.println(funbonacci(12));
+        System.out.println("----------------------------");
+        Rotation matrica_s_trigonometriey = new Rotation(30);
+        matrica_s_trigonometriey.print();
+        System.out.println(matrica_s_trigonometriey.getAngle());
     }
+
+    public static double funbonacci(int n) {
+        Matrix22 matrica = new Matrix22(1, 1, 1, 0);
+        return  matrica.pow(n).c;
+    }
+
 }
