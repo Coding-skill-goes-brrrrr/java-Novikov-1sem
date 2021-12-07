@@ -11,12 +11,28 @@ public class Matrix22 {
         this.d = d;
     }
 
+    public Matrix22(double [][] matrix) {
+        this.a = matrix[0][0];
+        this.b = matrix[0][1];
+        this.c = matrix[1][0];
+        this.d = matrix[1][1];
+    }
+
     public double determinant() {
         return this.a * this.d - this.b * this.c;
     }
 
     public double trace() {
         return this.a + this.d;
+    }
+
+    public double [][] getMatrix22() {
+        double[][] output = new double[2][2];
+        output[0][0] = this.a;
+        output[0][1] = this.b;
+        output[1][0] = this.c;
+        output[1][1] = this.d;
+        return output;
     }
 
     public String toString() {
