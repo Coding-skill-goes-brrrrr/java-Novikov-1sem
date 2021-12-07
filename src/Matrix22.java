@@ -1,21 +1,21 @@
 public class Matrix22 {
-    int a;
-    int b;
-    int c;
-    int d;
+    double a; //код был написан для int, но специфика задания про наследование вынудила изменить всё на double
+    double b;
+    double c;
+    double d;
 
-    public Matrix22(int a, int b, int c, int d) {
+    public Matrix22(double a, double b, double c, double d) {
         this.a = a;
         this.b = b;
         this.c = c;
         this.d = d;
     }
 
-    public int determinant() {
+    public double determinant() {
         return this.a * this.d - this.b * this.c;
     }
 
-    public int trace() {
+    public double trace() {
         return this.a + this.d;
     }
 
