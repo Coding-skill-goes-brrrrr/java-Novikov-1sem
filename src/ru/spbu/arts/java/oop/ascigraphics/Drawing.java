@@ -54,8 +54,52 @@ public class Drawing {
         }
     }
 
+    public void drawCircle (int x1, int y1, int r, char unit) {
+        int x = 0;
+        int y = r;
+        int delta = 1 - 2 * r;
+        int error = 0;
+        while (y >= x){
+        this.setPoint(x1 + x, y1 + y, unit);
+        this.setPoint(x1 + x, y1 - y, unit);
+        this.setPoint(x1 - x, y1 + y, unit);
+        this.setPoint(x1 - x, y1 - y, unit);
+        this.setPoint(x1 + y, y1 + x, unit);
+        this.setPoint(x1 + y, y1 - x, unit);
+        this.setPoint(x1 - y, y1 + x, unit);
+        this.setPoint(x1 - y, y1 - x, unit);
+        error = 2 * (delta + y) - 1;
+        if ((delta < 0) & (error <= 0)){
+            delta += 2 * ++x + 1;
+            continue;}
+        if ((delta > 0) & (error > 0)){
+            delta -= 2 * --y + 1;
+            continue;}
+        delta += 2 * (++x - --y);
+        }
+    }
 
-    public void toSummonGigaMonaLisaJokeJokondayeeeee (){
+    public void drawLine(int x0, int y0, int x1, int y1, char unit){
+        int deltax = Math.abs(x1 - x0);
+        int deltay = Math.abs(y1 - y0);
+        int error = 0;
+        int deltaerr = (deltay + 1);
+        int y = y0;
+        int diry = y1 - y0;
+        if (diry > 0)
+            diry = 1;
+        if (diry < 0)
+            diry = -1;
+        for (int x = x0; x <= x1; x++){
+            this.setPoint(x, y, unit);
+            error = error + deltaerr;
+            if (error >= (deltax + 1)){
+                y = y + diry;
+                error = error - (deltax + 1);}
+        }
+    }
+
+    public void toSummonGigaMonaLisaJokeJokondaYeeeee (){
         Drawing deBigPaintingNotByMe = new Drawing(35, 17, ' ');
         deBigPaintingNotByMe.drawHorizontalLine(1, 11, 13, '\'');
         deBigPaintingNotByMe.drawHorizontalLine(1, 14, 15, ':');

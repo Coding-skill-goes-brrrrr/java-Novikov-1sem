@@ -6,6 +6,8 @@ public class ExperimentsWithDrawing {
         Drawing risunok2 = new Drawing(10, 10, '.');
         Drawing risunok3 = new Drawing(10, 10, '.');
         Drawing risunok4 = new Drawing(10, 10, '.');
+        Drawing risunok5 = new Drawing(10, 10, '.');
+        Drawing risunok6 = new Drawing(10, 10, '.');
         risunok1.print();
         System.out.println("------------------------------");
         risunok1.setPoint(3,1,'Ъ');
@@ -28,7 +30,14 @@ public class ExperimentsWithDrawing {
         System.out.println("------------------------------");
         risunok4.drawRectangle(3,3,1,6,'*');
         risunok4.print();
+        System.out.println("------------------------------");
+        risunok5.drawCircle(5,5,3,'*');
+        risunok5.print();
+        System.out.println("------------------------------");
+        risunok6.drawLine(1,1,8,4,'*');
+        risunok6.drawLine(1,9,3,4,'*');
+        risunok6.print();
         System.out.println("Нарисовать домик оказалось непосильной задачей: вот Джоконда");
-        risunok4.toSummonGigaMonaLisaJokeJokondayeeeee ();
+        risunok4.toSummonGigaMonaLisaJokeJokondaYeeeee ();
     }
 }
