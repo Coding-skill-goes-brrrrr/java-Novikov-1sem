@@ -28,5 +28,7 @@ public class ExperimentsWithDrawing {
         System.out.println("------------------------------");
         risunok4.drawRectangle(3,3,1,6,'*');
         risunok4.print();
+        System.out.println("Нарисовать домик оказалось непосильной задачей: вот Джоконда");
+        risunok4.toSummonGigaMonaLisaJokeJokondayeeeee ();
     }
 }
