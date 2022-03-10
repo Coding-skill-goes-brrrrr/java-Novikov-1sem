@@ -14,11 +14,11 @@ public class ExperimentsWithRational {
         Rational drob7 = new Rational(1,0);
         Rational drob8 = new Rational(4,1);
 
-        System.out.println(drob1.toString());
-        System.out.println(drob5.toString());
-        System.out.println(drob6.toString());
-        System.out.println(drob7.toString());
-        System.out.println(drob8.toString());
+        System.out.println(drob1);
+        System.out.println(drob5);
+        System.out.println(drob6);
+        System.out.println(drob7);
+        System.out.println(drob8);
         System.out.println("-------------------------");
         System.out.println(drob1.toDouble());
         System.out.println(drob4.toDouble());
@@ -60,7 +60,7 @@ public class ExperimentsWithRational {
         Rational summa = new Rational (0,1);
         for (int i = 1; i < n+1; i++){
             Rational a = new Rational(1,i);
-            summa.addInPlace(a);
+            summa = summa.add(a);
         }
         return  summa.toDouble();
     }

@@ -24,7 +24,7 @@ public class Rational {
             return Integer.toString(this.n);
         else if (this.n == 0)
             return "0";
-        else return Integer.toString(this.n)+'/'+Integer.toString(this.d);
+        else return Integer.toString(this.n)+'/'+ this.d;
     }
 
     public double toDouble(){
@@ -39,15 +39,13 @@ public class Rational {
     public Rational simplify(){
         int a = this.n/pomosch(this.n,this.d);
         int b = this.d/pomosch(this.n,this.d);
-        Rational ans = new Rational(a,b);
-        return ans;
+        return new Rational(a,b);
     }
 
     public Rational add(Rational a){
         int n = a.n * this.d + this.n * a.d;
         int d = a.d * this.d;
-        Rational ans = new Rational(n,d);
-        return ans;
+        return new Rational(n,d);
     }
 
     public void addInPlace(Rational a){
@@ -58,8 +56,7 @@ public class Rational {
     public Rational sub(Rational a){
         int n = this.n * a.d - a.n * this.d;
         int d = a.d * this.d;
-        Rational ans = new Rational(n,d);
-        return ans;
+        return new Rational(n,d);
     }
 
     public void subInPlace(Rational a){
@@ -70,8 +67,7 @@ public class Rational {
     public Rational mul(Rational a){
         int n = this.n * a.n;
         int d = a.d * this.d;
-        Rational ans = new Rational(n,d);
-        return ans;
+        return new Rational(n,d);
     }
 
     public void mulInPlace(Rational a){
@@ -82,8 +78,7 @@ public class Rational {
     public Rational div(Rational a){
         int n = this.n * a.d;
         int d = a.n * this.d;
-        Rational ans = new Rational(n,d);
-        return ans;
+        return new Rational(n,d);
     }
 
     public void divInPlace(Rational a){
@@ -94,6 +89,7 @@ public class Rational {
     public int getChislitel(){
         return this.n ;
     }
+
     public int getZnamenatel(){
         return this.d ;
     }
