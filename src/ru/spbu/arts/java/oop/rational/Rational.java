@@ -1,6 +1,9 @@
 package ru.spbu.arts.java.oop.rational;
 
 public class Rational {
+    static Rational ZERO = new Rational(0);
+    static Rational ONE = new Rational(1);
+
     private int n;
     private int d;
 
@@ -86,6 +89,13 @@ public class Rational {
     public void divInPlace(Rational a){
         this.n *= a.d;
         this.d *= a.n;
+    }
+
+    public int getChislitel(){
+        return this.n ;
+    }
+    public int getZnamenatel(){
+        return this.d ;
     }
 
 }

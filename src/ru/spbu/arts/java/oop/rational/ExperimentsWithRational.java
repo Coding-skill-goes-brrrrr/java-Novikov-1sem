@@ -43,15 +43,26 @@ public class ExperimentsWithRational {
         Rational drob11 = drob8.mul(drob2);
         System.out.println(drob11.simplify().toString());
         System.out.println("Деления");
-        drob2.mulInPlace(drob0);
+        drob2.divInPlace(drob0);
         System.out.println(drob2.simplify().toString());
-        Rational drob12 = drob8.mul(drob0);
+        Rational drob12 = drob8.div(drob0);
         System.out.println(drob12.simplify().toString());
+        System.out.println("------------");
+        System.out.println(prikol(1));
+        System.out.println(prikol(2));
+        System.out.println(prikol(3));
+        System.out.println(prikol(20)); //-0.5477225963337075 - как? зачем?
+        for (int i = 1; i < 21; i++)
+            System.out.println(prikol(i));
     }
 
-    public static double funbonacci(int n) {
-        int matrica = 0;
-        return  matrica;
+    public static double prikol(int n) {
+        Rational summa = new Rational (0,1);
+        for (int i = 1; i < n+1; i++){
+            Rational a = new Rational(1,i);
+            summa.addInPlace(a);
+        }
+        return  summa.toDouble();
     }
 
 }
