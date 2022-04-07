@@ -14,10 +14,10 @@ public class Drawing implements Printable {
     }
 
     public void print() {
-        for (int i = 0; i < this.Draw.length; i++) {
-            String stroka = "";
-            for (int j = 0; j < this.Draw[i].length; j++)
-                stroka += this.Draw[i][j];
+        for (char[] chars : this.Draw) {
+            StringBuilder stroka = new StringBuilder();
+            for (int j = 0; j < chars.length; j++)
+                stroka.append(chars[j]);
             System.out.println(stroka);
         }
     }
