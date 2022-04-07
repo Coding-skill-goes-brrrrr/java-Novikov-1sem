@@ -1,11 +1,13 @@
 package ru.spbu.arts.java.lambda;
 
-public class PrintableString {
+public class PrintableString implements Printable {
     String stroka;
-    public PrintableString (String stroka){
+
+    public PrintableString(String stroka) {
         this.stroka = stroka;
     }
-    public void print(){
+
+    public void print() {
         System.out.println(stroka);
     }
 }

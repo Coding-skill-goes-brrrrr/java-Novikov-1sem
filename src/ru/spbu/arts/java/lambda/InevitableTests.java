@@ -1,4 +1,5 @@
 package ru.spbu.arts.java.lambda;
+
 import ru.spbu.arts.java.oop.ascigraphics.Drawing;
 
 public class InevitableTests {
@@ -9,7 +10,13 @@ public class InevitableTests {
         PrintableString ps = new PrintableString("asdf");
         ps.print(); //печатает asdf
 
-        Printable risunok = new Drawing(10,10,'.');
+        Printable risunok = new Drawing(3, 3, '.');
         risunok.print();
+
+        Printable lambda = () -> System.out.println("lambda here, lambda there");
+
+        Printable[] vsePodryad = {pl, ps, risunok, lambda};
+        for (Printable element : vsePodryad)
+            element.print();
     }
 }
