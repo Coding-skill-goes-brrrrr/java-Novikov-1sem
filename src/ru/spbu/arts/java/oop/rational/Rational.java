@@ -7,91 +7,91 @@ public class Rational {
     private int n;
     private int d;
 
-    public Rational (int n, int d){
+    public Rational(int n, int d) {
         this.n = n;
         this.d = d;
     }
 
-    public Rational (int n){
+    public Rational(int n) {
         this.n = n;
         this.d = 1;
     }
 
-    public String toString(){
+    public String toString() {
         if (this.d == 0)
             return "Невозможно...";
         else if (this.d == 1)
             return Integer.toString(this.n);
         else if (this.n == 0)
             return "0";
-        else return Integer.toString(this.n)+'/'+ this.d;
+        else return Integer.toString(this.n) + '/' + this.d;
     }
 
-    public double toDouble(){
-        return (double) this.n/(double) this.d;
+    public double toDouble() {
+        return (double) this.n / (double) this.d;
     }
 
     public int pomosch(int a, int b) {
-        if (b==0) return a;
-        return pomosch(b,a%b);
+        if (b == 0) return a;
+        return pomosch(b, a % b);
     }
 
-    public Rational simplify(){
-        int a = this.n/pomosch(this.n,this.d);
-        int b = this.d/pomosch(this.n,this.d);
-        return new Rational(a,b);
+    public Rational simplify() {
+        int a = this.n / pomosch(this.n, this.d);
+        int b = this.d / pomosch(this.n, this.d);
+        return new Rational(a, b);
     }
 
-    public Rational add(Rational a){
+    public Rational add(Rational a) {
         int n = a.n * this.d + this.n * a.d;
         int d = a.d * this.d;
-        return new Rational(n,d);
+        return new Rational(n, d);
     }
 
-    public void addInPlace(Rational a){
+    public void addInPlace(Rational a) {
         this.n = a.n * this.d + this.n * a.d;
         this.d *= a.d;
     }
 
-    public Rational sub(Rational a){
+    public Rational sub(Rational a) {
         int n = this.n * a.d - a.n * this.d;
         int d = a.d * this.d;
-        return new Rational(n,d);
+        return new Rational(n, d);
     }
 
-    public void subInPlace(Rational a){
+    public void subInPlace(Rational a) {
         this.n = this.n * a.d - a.n * this.d;
         this.d *= a.d;
     }
 
-    public Rational mul(Rational a){
+    public Rational mul(Rational a) {
         int n = this.n * a.n;
         int d = a.d * this.d;
-        return new Rational(n,d);
+        return new Rational(n, d);
     }
 
-    public void mulInPlace(Rational a){
+    public void mulInPlace(Rational a) {
         this.n *= a.n;
         this.d *= a.d;
     }
 
-    public Rational div(Rational a){
+    public Rational div(Rational a) {
         int n = this.n * a.d;
         int d = a.n * this.d;
-        return new Rational(n,d);
+        return new Rational(n, d);
     }
 
-    public void divInPlace(Rational a){
+    public void divInPlace(Rational a) {
         this.n *= a.d;
         this.d *= a.n;
     }
 
-    public int getChislitel(){
-        return this.n ;
+    public int getChislitel() {
+        return this.n;
     }
 
-    public int getZnamenatel(){
-        return this.d ;
+    public int getZnamenatel() {
+        return this.d;
     }
 
 }

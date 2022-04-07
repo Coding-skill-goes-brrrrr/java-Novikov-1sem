@@ -1,18 +1,17 @@
 package ru.spbu.arts.java.oop.rational;
 
 
-
 public class ExperimentsWithRational {
     public static void main(String[] args) {
-        Rational drob0 = new Rational(6,22);
-        Rational drob1 = new Rational(1,2);
-        Rational drob2 = new Rational(1,6);
-        Rational drob3 = new Rational(5,6);
-        Rational drob4 = new Rational(14,6);
-        Rational drob5 = new Rational(0,0);
-        Rational drob6 = new Rational(0,1);
-        Rational drob7 = new Rational(1,0);
-        Rational drob8 = new Rational(4,1);
+        Rational drob0 = new Rational(6, 22);
+        Rational drob1 = new Rational(1, 2);
+        Rational drob2 = new Rational(1, 6);
+        Rational drob3 = new Rational(5, 6);
+        Rational drob4 = new Rational(14, 6);
+        Rational drob5 = new Rational(0, 0);
+        Rational drob6 = new Rational(0, 1);
+        Rational drob7 = new Rational(1, 0);
+        Rational drob8 = new Rational(4, 1);
 
         System.out.println(drob1);
         System.out.println(drob5);
@@ -57,12 +56,12 @@ public class ExperimentsWithRational {
     }
 
     public static double prikol(int n) {
-        Rational summa = new Rational (0,1);
-        for (int i = 1; i < n+1; i++){
-            Rational a = new Rational(1,i);
+        Rational summa = new Rational(0, 1);
+        for (int i = 1; i < n + 1; i++) {
+            Rational a = new Rational(1, i);
             summa = summa.add(a);
         }
-        return  summa.toDouble();
+        return summa.toDouble();
     }
 
 }
