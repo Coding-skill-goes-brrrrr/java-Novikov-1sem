@@ -1,19 +1,15 @@
 package ru.spbu.arts.java.javafx.messenger;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
+
 
 
 public class Messenger extends Application{
