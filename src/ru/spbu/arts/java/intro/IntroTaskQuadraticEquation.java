@@ -1,3 +1,5 @@
+package ru.spbu.arts.java.intro;
+
 public class IntroTaskQuadraticEquation {
     public static void main(String[] args){
         System.out.println(Equation(0, 0, 0));

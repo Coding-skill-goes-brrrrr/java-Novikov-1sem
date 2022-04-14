@@ -1,3 +1,5 @@
+package ru.spbu.arts.java.matrix;
+
 public class Matrix22 {
     double a; //код был написан для int, но специфика задания про наследование вынудила изменить всё на double
     double b;

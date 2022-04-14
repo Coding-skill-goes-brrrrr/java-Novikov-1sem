@@ -1,3 +1,5 @@
+package ru.spbu.arts.java.matrix;
+
 public class Tests {
     public static void main(String[] args) {
         Matrix22 matrica = new Matrix22(1, 2, 3, 4);

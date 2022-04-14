@@ -1,3 +1,5 @@
+package ru.spbu.arts.java.matrix;
+
 public class Rotation extends Matrix22 {
     private double ugol;
     public Rotation(double a) {

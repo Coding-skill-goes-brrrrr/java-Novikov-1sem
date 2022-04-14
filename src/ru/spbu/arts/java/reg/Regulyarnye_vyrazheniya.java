@@ -1,3 +1,5 @@
+package ru.spbu.arts.java.reg;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class Regulyarnye_vyrazheniya {

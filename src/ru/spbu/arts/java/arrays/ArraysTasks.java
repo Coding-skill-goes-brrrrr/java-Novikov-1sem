@@ -1,3 +1,5 @@
+package ru.spbu.arts.java.arrays;
+
 public class ArraysTasks {
     public static void main(String[] args){
         toString(even(5));

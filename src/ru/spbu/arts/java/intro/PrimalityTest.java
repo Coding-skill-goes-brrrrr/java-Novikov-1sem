@@ -1,3 +1,5 @@
+package ru.spbu.arts.java.intro;
+
 public class PrimalityTest {
     public static void main(String[] args){
         System.out.println(isPrime(1));
