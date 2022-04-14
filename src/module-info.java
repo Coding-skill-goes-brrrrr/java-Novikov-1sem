@@ -4,6 +4,6 @@ module ru.spbu.arts.java.javafx {
     requires javafx.controls;
 
     //разрешаем библиотеке javafx исследовать содержимое нашего пакета с кодом
-    opens ru.spbu.arts.java.javafx.button;
+    //opens ru.spbu.arts.java.javafx.button;
     opens ru.spbu.arts.java.javafx.messenger;
 }
