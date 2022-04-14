@@ -11,64 +11,51 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 
 
 public class Messenger extends Application{
-    private Button sendBtn;
-    private TextArea messages;
-    private TextField newMessage;
 
     @Override
-    public void start(Stage primaryStage){
-        primaryStage.setTitle("MyMessenger");
+    public void start(Stage stage) {
+        //объект Stage — это окно приложения, у него есть заголок, кнопочки,
+        //содержимое
+        stage.setTitle("Фейсбук");
 
+        //Parent — узел, который можно использовать как корень для сцены
         Parent parent = initInterface();
-        initInteraction();
+        stage.setScene(new Scene(parent));
 
-        primaryStage.setScene(new Scene(parent));
-        primaryStage.show();
+        //сделать видимым
+        stage.show();
     }
 
     private Parent initInterface() {
-        HBox panel0 = new HBox();
-        VBox panelLeft = new VBox();
-        VBox panelRight = new VBox();
-        HBox.setHgrow(panelLeft, Priority.ALWAYS);
+        HBox messengerWindow = new HBox();
+        HBox textFieldAndButton = new HBox();
+        VBox TFandBandTextArea = new VBox();
+        VBox labelAndListView = new VBox();
 
-        // элементы левой панели
-        messages = new TextArea();
-        messages.setEditable(false);
-        VBox.setVgrow(messages, Priority.ALWAYS);
-        HBox panelSend = new HBox();
-        newMessage = new TextField();
-        HBox.setHgrow(newMessage, Priority.ALWAYS);
-        sendBtn = new Button("Отправить");
-        sendBtn.setPrefWidth(100);
+        TextArea messages = new TextArea();
+        messages.setPrefHeight(385);
+        HBox.setHgrow(messages, Priority.ALWAYS);
+        TextField messageWrite = new TextField();
+        HBox.setHgrow(messageWrite, Priority.ALWAYS);
+        Button sendMessage = new Button("Отправить");
+        sendMessage.setMinWidth(80);
+        sendMessage.setPrefWidth(80);
+        Label contactList = new Label("Список Контактов");
+        ListView contacts = new ListView();
 
-        //элементы правой панели
-        Label contactTitle = new Label("Контакты");
-        contactTitle.setPrefHeight(20);
-        ListView<String> contactList = new ListView<>();
-        ObservableList<String> items = FXCollections.observableArrayList("Мама", "Котик", "Ира ногти");
-        contactList.setItems(items);
-        VBox.setVgrow(contactList, Priority.ALWAYS);
-
-        panelSend.getChildren().addAll(newMessage, sendBtn);
-        panelLeft.getChildren().addAll(messages, panelSend);
-        panelRight.getChildren().addAll(contactTitle, contactList);
-        panel0.getChildren().addAll(panelLeft, panelRight);
-
-        return panel0;
+        textFieldAndButton.getChildren().addAll(messageWrite, sendMessage);
+        TFandBandTextArea.getChildren().addAll(messages, textFieldAndButton);
+        labelAndListView.getChildren().addAll(contactList, contacts);
+        labelAndListView.setPrefWidth(250);
+        HBox.setHgrow(labelAndListView, Priority.ALWAYS);
+        messengerWindow.getChildren().addAll(TFandBandTextArea, labelAndListView);
+        HBox.setHgrow(messengerWindow, Priority.ALWAYS);
+        return messengerWindow;
     }
-
-    private void initInteraction() {
-        sendBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-            String message = newMessage.getText();
-            if (!message.equals("")){
-                messages.appendText(message + "\n");
-            }
-            newMessage.setText("");
-        });
-    }
-
 }
