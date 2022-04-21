@@ -2,128 +2,124 @@ package ru.spbu.arts.java.javafx.circle_management;
 
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
+import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import java.util.Locale;
 
 public class tests extends Application {
 
-    private TextField text;
-    private Label label1;
-    private Label label2;
-    private Label label3;
-    private Label label4;
-    private Label label5;
-    private Label label6;
-    private Label label7;
-
-    private Stage primaryStage;
-
+    private Button button1; // первая кнопка на окне
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        this.primaryStage = primaryStage;
+    public void start(Stage stage) {
+        //объект Stage — это окно приложения, у него есть заголок, кнопочки,
+        //содержимое
+        stage.setTitle("Circle Manager");
 
-        primaryStage.setTitle("Пример связывания свойств");
+        //Parent — узел, который можно использовать как корень для сцены
         Parent parent = initInterface();
-        primaryStage.setScene(new Scene(parent));
-        initInteraction();
-        primaryStage.show();
+        stage.setScene(new Scene(parent));
+
+        //сделать видимым
+        stage.show();
     }
 
     private Parent initInterface() {
-        //несколько метод и поле ввода текста
+        GridPane mainPanel = new GridPane();
+        Circle circle = new Circle(1,2,3);
 
-        text = new TextField("вводите сюда текст");
 
-        label1 = new Label("пока без текста 1");
-        label2 = new Label("пока без текста 2");
-        label3 = new Label("пока без текста 3");
-        label4 = new Label("пока без текста 4");
-        label5 = new Label("пока без текста 5");
-        label6 = new Label("пока без текста 6");
-        label7 = new Label("пока без текста 7");
+        Label sliderLabel = new Label("Размер круга");
+        Slider sizeSlider = new Slider();
+        sizeSlider.valueProperty().addListener(o -> {
+            Double circleSize = sizeSlider.getValue();
+            circle.setRadius(circleSize);
+        });
 
-        VBox vbox = new VBox(
-                label1, label2, label3, label4, label5, label6, label7,
-                text
-        );
-        vbox.setStyle("-fx-font-size: 2em");
-        return vbox;
+        Label colourPicker1Label = new Label("Цвет круга");
+        ColorPicker colourPicker1 = new ColorPicker();
+        colourPicker1.valueProperty().addListener(o -> {
+            Color circleColour = colourPicker1.getValue();
+            circle.setFill(circleColour);
+        });
+
+        Label colourPicker2Label = new Label("Цвет фона");
+        ColorPicker colourPicker2 = new ColorPicker();
+        colourPicker2.valueProperty().addListener(o -> {
+            String bgColour = colourPicker2.getStyle();
+            mainPanel.setStyle(bgColour);
+        });
+
+
+        //добавляем панели 1, 2, 3 на grid pane
+        mainPanel.add(sliderLabel, 0, 0);
+        mainPanel.add(sizeSlider, 0, 1);
+        mainPanel.add(colourPicker1Label, 0, 2);
+        mainPanel.add(colourPicker1, 0, 3);
+        mainPanel.add(colourPicker2Label, 0, 4);
+        mainPanel.add(colourPicker2, 0, 5);
+        mainPanel.add(circle, 1, 0,10,10);
+
+
+        button1 = new Button("Не нажимай эту кнопку");
+        button1.setMaxWidth(100000); //много. Нужно, чтобы кнопка тянулась
+        button1.setMaxHeight(Double.MAX_VALUE); //самый большой double, который бывает
+
+        return mainPanel;
     }
 
     private void initInteraction() {
-        //Метка 1, слушатель следит за изменением text
-        //нас интересует свойство text объекта text, именно в нём
-        //находится значение, введенное пользователем
-        //свойство text => .textProperty()
-        //.textProperty() - это Observable
-        //.textProperty().get() — получить значение <=> .getText()
-        text.textProperty().addListener(o -> {
-            String textFromUser = text.getText();
-            label1.setText(textFromUser);
+        // здесь мне требуется описать поведение button1
+
+        //1 способ. Универсальный, так можно слушателя любого события
+        //указываем, события какого типа нам инетресны. Нажатие кнопки — ActionEvent
+        //сравните с javascript: button1.addEventListener("click", ...)
+        //и указываем реализацию интерфейса EventHandler (=слушатель)
+        //такой интерфейс можно реализовать lambda-выражением
+        button1.addEventHandler(ActionEvent.ACTION, event -> {
+            //переменная event содержит информацию о событии.
+            System.out.println("Нельзя было нажимать на эту кнопку, пожалуйста, больше не нажимайте");
+            System.out.println(event.getSource()); // можно получить объект-источник события
         });
 
-        //Метка 2, аналогично, но другой вид слушателя
-        text.textProperty().addListener(
-                (o, oldValue, newValue) -> label2.setText(newValue)
-        );
-        //до того, как сработает слушатель, неплохо бы сразу установить текст метке
-        label2.setText(text.getText());
+        //события мыши, бывают разные — клик, опустить кнопку, поднять кнопку, движение, наведение, уведение
+        //Что бы с мышью не случилось, информация о событии - это координаты курсора, какие кнопки
+        //нажаты (левая, правая)
+        button1.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            System.out.println("Нажата мышь: " + mouseEvent.getButton());
+        });
 
-        //Метка 3, а теперь свяжем свойства
-        //свойство text у метки 3 должно быть привязано к свойству text
-        //объекта text
-        label3.textProperty().bind(
-                text.textProperty()
+        button1.addEventHandler(MouseEvent.MOUSE_MOVED, mouseEvent ->
+                System.out.println("мышь движется: " + mouseEvent.getX() + ", " + mouseEvent.getY())
         );
 
-        //Метка 4, а что, если хочется не напрямую копировать текст, а добавить "!"
-        //Класс Bindings умеет составлять из нескольких observable новые
-        //Например, можно из width, height получить area = width*height, area
-        //будет изменяться при любом изменении высоты, ширины
-        label4.textProperty().bind(
-                //text.textProperty() + "!" - невозможно
-                //concat создает String-observable, соединяя значения
-                Bindings.concat(text.textProperty(), "!")
+        //2. Как еще можно реагировать на нажатие кнопки
+        button1.setOnAction(actionEvent -> {
+            System.out.println("Кнопка нажата (2 способ добавления слушателя)");
+        });
+        // этот способ короче первого, но таким образом можно добавить только одного слушателя на нажатие кнопки
+        // зато легко удалить слушателя: button1.setOnAction(null)
+        // в первом случае удалить слушателя тоже можно, button1.removeEventHandler(... тот же объект EventHandler,
+        // что и раньше.
+
+        // про Observables:
+
+        //button1.widthProperty() - это Observable значение ширины кнопки
+        button1.widthProperty().addListener(observable ->
+                System.out.println("Ширина кнопки стала " + button1.getWidth()) // или button1.widthProperty().get()
+        );
+        button1.widthProperty().addListener((o, oldWidth, newWidth) ->
+                System.out.println("Ширина кнопки была " + oldWidth + " и стала " + newWidth)
         );
 
-        //Если в Bindings нет необходимой операции, можно реализовать произвольное
-        //вычисление. Будем переводить текст в верхний регистр
-        label5.textProperty().bind(
-                // Bindings.uppercase() - нет такого метода
-
-                //create ... STRING ... binding, т.е. результат вычисления — строка
-                Bindings.createStringBinding(
-                        () -> {  //lambda выражение без аргументов
-                            //как только изменится text.textProperty(),
-                            //вычислится это значение, и оно будет присвоено
-                            //label5.textProperty
-                            return text.getText().toUpperCase();
-                        },
-                        text.textProperty() // за изменением text мы следим
-                )
-        );
-
-        //площадь окна в метке 6
-        label6.textProperty().bind(Bindings.createStringBinding(
-                () -> {
-                    var width = primaryStage.getWidth();
-                    var height = primaryStage.getHeight();
-                    return width * height + "px^2";
-                },
-                primaryStage.widthProperty(), primaryStage.heightProperty()
-        ));
-
-        // слушатели — универсальный механизм реагирования на события
-        // bindings — подходят для особых случаев, когда надо сделать так,
-        // значения разных свойств вычислялись друг через друга.
-
-        // bindings делается через слушателей
     }
 }

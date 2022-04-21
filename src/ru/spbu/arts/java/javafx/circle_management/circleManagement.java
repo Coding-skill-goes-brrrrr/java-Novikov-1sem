@@ -1,5 +1,6 @@
 package ru.spbu.arts.java.javafx.circle_management;
-
+//пробовал делать через Pane
+//как-то не задалось...
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
@@ -11,8 +12,11 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 import javafx.scene.paint.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
+
 
 public class circleManagement extends Application{
     private Button button1; // первая кнопка на окне
@@ -33,7 +37,13 @@ public class circleManagement extends Application{
 
     private Parent initInterface() {
         GridPane mainPanel = new GridPane();
-        Circle circle = new Circle(1,2,3);
+
+
+        HBox mainWindow = new HBox();
+        VBox managerPanel = new VBox();
+        managerPanel.setPrefWidth(100);
+        Pane circlePanel = new Pane();
+        Circle circle = new Circle(100,100,0,Color.WHITE);
 
 
         Label sliderLabel = new Label("Размер круга");
@@ -53,26 +63,21 @@ public class circleManagement extends Application{
         Label colourPicker2Label = new Label("Цвет фона");
         ColorPicker colourPicker2 = new ColorPicker();
         colourPicker2.valueProperty().addListener(o -> {
-            String bgColour = colourPicker2.getStyle();
-            mainPanel.setStyle(bgColour);
+            Color bgColour = colourPicker2.getValue();
+            //circlePanel.set(bgColour);
         });
 
+        managerPanel.getChildren().addAll(sliderLabel, sizeSlider, colourPicker1Label, colourPicker1, colourPicker2Label, colourPicker2);
+        circlePanel.getChildren().addAll(managerPanel, circle);
+        mainWindow.getChildren().addAll(managerPanel, circlePanel);
 
-        //добавляем панели 1, 2, 3 на grid pane
-        mainPanel.add(sliderLabel, 0, 0);
-        mainPanel.add(sizeSlider, 0, 1);
-        mainPanel.add(colourPicker1Label, 0, 2);
-        mainPanel.add(colourPicker1, 0, 3);
-        mainPanel.add(colourPicker2Label, 0, 4);
-        mainPanel.add(colourPicker2, 0, 5);
-        mainPanel.add(circle, 1, 0,10,10);
 
 
         button1 = new Button("Не нажимай эту кнопку");
         button1.setMaxWidth(100000); //много. Нужно, чтобы кнопка тянулась
         button1.setMaxHeight(Double.MAX_VALUE); //самый большой double, который бывает
 
-        return mainPanel;
+        return mainWindow;
     }
 
     private void initInteraction() {
